@@ -1,0 +1,158 @@
+{
+  "5": {
+    "id": 5,
+    "name": "Carbon",
+    "volume": 1000000,
+    "content": [
+      {
+        "user_id": 0,
+        "stock_id": 5,
+        "value": 1.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Sell"
+      },
+      {
+        "user_id": 0,
+        "stock_id": 5,
+        "value": 10.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Buy"
+      }
+    ],
+    "appeal": 0.0
+  },
+  "0": {
+    "id": 0,
+    "name": "Hydrogen",
+    "volume": 1000000,
+    "content": [
+      {
+        "user_id": 0,
+        "stock_id": 0,
+        "value": 1.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Sell"
+      },
+      {
+        "user_id": 0,
+        "stock_id": 0,
+        "value": 10.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Buy"
+      }
+    ],
+    "appeal": 0.0
+  },
+  "1": {
+    "id": 1,
+    "name": "Helium",
+    "volume": 1000000,
+    "content": [
+      {
+        "user_id": 0,
+        "stock_id": 1,
+        "value": 1.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Sell"
+      },
+      {
+        "user_id": 0,
+        "stock_id": 1,
+        "value": 10.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Buy"
+      }
+    ],
+    "appeal": 0.0
+  },
+  "2": {
+    "id": 2,
+    "name": "Lithium",
+    "volume": 1000000,
+    "content": [
+      {
+        "user_id": 0,
+        "stock_id": 2,
+        "value": 1.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Sell"
+      },
+      {
+        "user_id": 0,
+        "stock_id": 2,
+        "value": 10.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Buy"
+      }
+    ],
+    "appeal": 0.0
+  },
+  "3": {
+    "id": 3,
+    "name": "Beryllium",
+    "volume": 1000000,
+    "content": [
+      {
+        "user_id": 0,
+        "stock_id": 3,
+        "value": 1.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Sell"
+      },
+      {
+        "user_id": 0,
+        "stock_id": 3,
+        "value": 10.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Buy"
+      }
+    ],
+    "appeal": 0.0
+  },
+  "4": {
+    "id": 4,
+    "name": "Boron",
+    "volume": 1000000,
+    "content": [
+      {
+        "user_id": 0,
+        "stock_id": 4,
+        "value": 1.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Sell"
+      },
+      {
+        "user_id": 0,
+        "stock_id": 4,
+        "value": 10.0,
+        "amount": 100,
+        "time": 0,
+        "status": "Pending",
+        "listing_type": "Buy"
+      }
+    ],
+    "appeal": 0.0
+  }
+}

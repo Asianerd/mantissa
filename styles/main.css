@@ -1,0 +1,648 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root {
+    /* --background:#101120;
+    --secondary:#1B1C30;
+    --primary:#282845; */
+    /* --background:#10071E;
+    --secondary:#201A25;
+    --primary:#A173FD; */
+    --background:#07081F;
+    --primary:#131330;
+    --secondary:#262739;
+    /* color scheme from here */
+    /* https://dribbble.com/shots/17198967-Stock-Market-Web-Design?utm_source=Clipboard_Shot&utm_campaign=KibouStudio&utm_content=Stock%20Market%20Web%20Design&utm_medium=Social_Share */
+}
+
+body, h1, h2, h3, h4, h5, h6, input, a, textarea {
+    font-family: 'Noto Sans';
+    font-weight: 200;
+
+    margin:0;
+    padding:0;
+}
+
+/* #region navbar */
+#navbar {
+    position:sticky;
+    top:0;
+    z-index: 1000;
+
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding:1ch 5ch;
+
+    background:var(--primary);
+    /* height:1ch; */
+
+    filter:drop-shadow(0 0 10px #000);
+}
+
+#navbar > div {
+    display:flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#navbar img {
+    height:2.5em;
+    margin-left:2ch;
+}
+/* #endregion */
+
+/* #region footer */
+#footer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin:5ch 0;
+}
+
+#footer h5 {
+    font-size:1em;
+
+    margin-bottom:0.5em;
+}
+
+#footer > a {
+    font-style:italic;
+    text-underline-offset: 3px !important;
+    text-decoration: underline !important;
+}
+
+#footer a {
+    font-size: 1em;
+    text-decoration: none;
+    color:var(--text);
+}
+
+#footer > div {
+    margin-top:3ch;
+}
+
+#footer img {
+    height:5ch;
+
+    margin:0 1ch;
+
+    border-radius:1000px;
+}
+/* #endregion */
+
+
+#parent {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: start;
+    flex-direction: row;
+
+    width:100%;
+
+    background:var(--background);
+}
+
+/* #region sidebar */
+#sidebar {
+    /* background:red; */
+    height:100vh;
+    width: 20vw;
+}
+
+#watchlist, #recommended {
+    width:calc(100% - 12ch);
+    margin:3ch;
+    padding:3ch;
+
+    background:var(--primary);
+    border-radius:var(--border-radius);
+    filter:drop-shadow(0 0 10px #0005);
+}
+
+/* #region header */
+#sidebar #header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom:2ch;
+
+    font-size: 1rem;
+}
+
+#sidebar #header h4 {
+    font-weight: 400;
+    /* margin-left:1ch; */
+}
+
+#sidebar #header #search {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    /* background:red; */
+
+    width:40%;
+
+    padding-bottom:5px;
+
+    border-color:var(--border-color);
+    border-bottom-style:solid;
+    border-width: 2px;
+}
+
+#sidebar #header input {
+    width:80%;
+
+    color:white;
+
+    font-size: 1rem;
+
+    height:1em;
+    margin-left:1ch;
+    border:none;
+    background:none;
+}
+
+#sidebar #header #search img {
+    width: 10%;
+}
+/* #endregion */
+
+/* #region sidebar item */
+.sidebar-item {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin:1ch 0;
+    padding:0;
+
+    /* background:red; */
+}
+
+.sidebar-item h4 {
+    font-weight: 300;
+}
+
+.sidebar-item #data {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #region growth */
+#growth {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#growth img {
+    height:1em;
+}
+
+#growth h5 {
+    font-size:1em;
+    font-weight: bold;
+}
+
+.sidebar-item #growth {
+    margin-right:2ch;
+}
+
+.sidebar-item[aria-label="bullish"] #growth h5 {
+    color:lime;
+}
+
+.sidebar-item[aria-label="bullish"] #growth #loss-icon {
+    display:none;
+}
+
+.sidebar-item[aria-label="bearish"] #growth h5 {
+    color:red;
+}
+
+.sidebar-item[aria-label="bearish"] #growth #profit-icon {
+    display:none;
+}
+/* #endregion */
+/* #endregion */
+/* #endregion sidebar */
+
+/* #region main */
+#main {
+    background:var(--primary);
+
+    width: calc(80vw - 9ch);
+    margin:3ch;
+    margin-left:0;
+    padding:3ch;
+
+    border-radius:var(--border-radius);
+
+    filter:drop-shadow(0 0 5px #0005);
+}
+
+#main #header {
+    display:flex;
+    justify-content: start;
+    align-items: center;
+}
+
+/* #region data */
+#main #header #data {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left:3ch;
+}
+
+#main #header #data h4 {
+    margin-left:0.5ch;
+}
+
+/* #region growth */
+#data[aria-label="bullish"] #growth h5 {
+    color:lime;
+}
+
+#data[aria-label="bullish"] #growth #loss-icon {
+    display:none;
+}
+
+#data[aria-label="bearish"] #growth h5 {
+    color:red;
+}
+
+#data[aria-label="bearish"] #growth #profit-icon {
+    display:none;
+}
+/* #endregion */
+
+
+/* #endregion */
+
+/* #region graph */
+#graph {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+#graph img {
+    margin-bottom:2ch;
+}
+
+#graph #range {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width:50%;
+}
+
+#graph #range h5 {
+    padding:0.5ch 1ch;
+
+    border-style:solid;
+    border-radius:15px;
+    border-width: 2px;
+    border-color:var(--main);
+
+    cursor: pointer;
+
+    transition-duration: 0.3s;
+}
+
+#graph #range h5[aria-label="checked"] {
+    background:var(--main);
+}
+/* #endregion */
+
+/* #region details */
+#details {
+    display:flex;
+    justify-content: center;
+    align-items: start;
+}
+
+#details > div {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    flex:3;
+    padding:1ch;
+    margin:1ch;
+}
+
+#details > div:first-child {
+    flex:4;
+}
+
+#details > * > div {
+    border-radius:var(--border-radius);
+    /* filter:drop-shadow(0 0 5px #0005); */
+
+    width:calc(100% - 2ch);
+    padding:2ch;
+
+    margin-top:2ch;
+
+    background:var(--secondary);
+}
+
+/* #region information */
+#details #information {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#details #information h5 {
+    font-size: 1.2rem;
+}
+
+
+/* #details #information > div {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: start;
+
+    flex-direction: row;
+
+    width:49%;
+}
+
+#details #information > div div {
+    display:flex;
+    justify-content: space-between;
+    align-items: start;
+
+    flex-direction: column;
+} */
+
+#information table {
+    width:48%;
+}
+
+#information table th, #information table td {
+    text-align: start;
+    font-weight: 300;
+}
+
+/* #endregion */
+
+/* #region news */
+.article:last-child hr {
+    display:none;
+}
+
+.article hr {
+    border-style:solid;
+    border-color:var(--border-color);
+}
+
+.article #timestamp {
+    color:#999;
+
+    text-align:end;
+    font-style:italic;
+    font-size:0.9rem;
+
+    margin-right:2ch;
+}
+/* #endregion */
+
+/* #region purchase */
+#details #purchase {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+#details #purchase #header {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+}
+
+#details #purchase #header h5 {
+    color:#999;
+    font-weight: 300;
+
+    border-bottom-style:solid;
+    border-bottom-color:#0000;
+    border-width: 4px;
+
+    user-select: none;
+
+    transition-duration:0.3s;
+    cursor:pointer;
+}
+
+#details #purchase #header h5[aria-label="selected"] {
+    border-bottom-color:var(--border-color);
+    color:#fff;
+}
+
+/* #region filters */
+/* div#filters {
+    min-width:80%;
+}
+
+#filters > div {
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+}
+
+#filters > * > div {
+    display:flex;
+    justify-content: start;
+    align-items: center;
+
+    font-size: 1em;
+} */
+
+#purchase #filters {
+    /* display:flex;
+    justify-content: space-evenly;
+    align-items: center; */
+
+    font-size:1em;
+
+    width:90%;
+}
+
+#purchase #filters td > div {
+    display:flex;
+    justify-content: start;
+    align-items: center;
+}
+
+#purchase #filters h5 {
+    font-size: inherit;
+}
+
+#purchase #filters input {
+    background:none;
+    color:var(--text);
+
+    text-align: end;
+    font-size: inherit;
+
+    width:8ch;
+
+    border:none;
+    border-bottom-style:solid;
+    border-color:var(--border-color);
+}
+
+#purchase #sort {
+    display:flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+}
+
+#purchase #sort > div {
+    display:flex;
+    justify-content: space-evenly !important;
+    align-items: center;
+
+    width:100%;
+}
+
+#purchase #sort > div h5 {
+    user-select: none;
+
+    opacity: 0.5;
+
+    transition-duration:0.1s;
+
+    cursor:pointer;
+}
+
+#purchase #sort > div img {
+    width:0.8em;
+
+    user-select: none;
+    cursor:pointer;
+}
+
+#purchase #sort > div img[aria-label="asc"] {
+    transform:rotateZ(180deg);
+}
+
+#purchase #sort > div h5[aria-label="selected"] {
+/* #purchase #sort > div h5:hover { */
+    opacity: 1;
+    font-weight:400;
+}
+
+
+
+/* #region listings */
+#purchase table#listings {
+    margin-top:3ch;
+
+    width:70%;
+}
+
+#purchase table#listings th {
+    text-align: center;
+    font-weight: 400;
+}
+
+#purchase table#listings td {
+    text-align: center;
+}
+/* #endregion */
+/* #endregion */
+/* #endregion */
+
+/* #region history */
+#history {
+    display:flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+#history #header {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin-bottom:2ch;
+
+    width:100%;
+}
+
+#history #header h5 {
+    color:#999;
+    font-weight: 300;
+
+    border-bottom-style:solid;
+    border-bottom-color:var(--border-color);
+    border-width: 0;
+}
+
+#history #header h5[aria-label="selected"] {
+    border-width: 4px;
+    color:#fff;
+}
+
+/* 
+#history #data {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+} */
+
+
+
+/* .history-record {
+    background:red;
+
+    width: 50%;
+
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+} */
+
+#history table#data {
+    width:70%;
+}
+
+#history table#data th {
+    text-align: center;
+    font-weight: 400;
+}
+
+#history table#data td {
+    text-align: center;
+}
+
+/* #endregion */
+
+/* #endregion */
+
+/* #endregion */
