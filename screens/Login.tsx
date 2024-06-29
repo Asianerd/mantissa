@@ -1,10 +1,46 @@
 import { Button, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { screenSize } from "../App";
-import React from "react";
-import { CustomLinearGradient, colorScheme, defaultFont, defaultFontItalic, fontSize } from "../constants/style";
+import React, { useEffect } from "react";
+import { CustomLinearGradient, colorScheme, defaultFont, defaultFontBold, defaultFontItalic, fontSize } from "../constants/style";
+import { SOTERIUS_BACKEND, MANTISSA_BACKEND } from "../constants/networking";
 import { Defs, LinearGradient, Rect, Stop, Svg } from "react-native-svg";
 
-function Login(): React.JSX.Element {
+function Login({navigation}: {navigation: any}): React.JSX.Element {
+    async function attemptLogin(username: String, password: String) {
+        fetch(`${SOTERIUS_BACKEND}/${state}`, {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
+            headers: {
+                'Content-type': 'text/plain'
+            }
+        })
+        .then(response => response.json())
+        .then(
+            json => {
+                if (JSON.parse(JSON.stringify(json))['Success'] != undefined) {
+                    // successful login
+                    console.log("logged in");
+                    navigation.navigate('home');
+                    onStatusChange('');
+                } else {
+                    let message = {
+                        'PasswordWrong': 'password is wrong',
+                        'UsernameNoExist': "username doesn't exist",
+                        'UsernameTaken': 'that username is already taken',
+                        'PasswordNoExist': 'i dont know either'
+                    }[JSON.stringify(json).replaceAll('"', '')];
+                    onStatusChange(message != undefined ? message : '');
+                }
+            }
+        )
+        .catch((error) => {
+            console.log(`attemptLogin() at Login.tsx error : ${error}`);
+        })
+    }
+
     const loginStyles = StyleSheet.create({
         input: {
             width:0.7 * screenSize.width,
@@ -20,7 +56,6 @@ function Login(): React.JSX.Element {
             fontFamily: defaultFont
         },
         button: {
-            // backgroundColor: `linear-gradient(90deg, ${colorScheme.tertiary} 50%, ${colorScheme.tertiary_alternative} 100%)`,
             backgroundColor: colorScheme.secondary,
             padding:8,
             paddingHorizontal:15,
@@ -36,6 +71,22 @@ function Login(): React.JSX.Element {
     const [password, onPasswordChange] = React.useState('');
     const [confirmPassword, onConfirmPasswordChange] = React.useState('');
 
+    const [status, onStatusChange] = React.useState('');
+
+    const validatePassword = () => {
+        if (password != confirmPassword) {
+            return {
+                state: false,
+                message: 'passwords do not match'
+            };
+        }
+
+        return {
+            state: true,
+            message: ''
+        };
+    }
+
     return <View style={{
         backgroundColor: colorScheme.background,
         flex: 1,
@@ -43,12 +94,15 @@ function Login(): React.JSX.Element {
         justifyContent: 'center',
         alignItems: 'center'
         }}>
-            <Image source={require('../assets/sns/github.png')} style={{
+            {/* <Image source={require('../assets/sns/github.png')} style={{
                 borderRadius: 1000,
                 height:'20%',
                 aspectRatio: 1,
                 marginBottom:20
-            }} />
+            }} /> */}
+            <Text style={{ color:colorScheme.tertiary, fontSize: fontSize.large, fontFamily:defaultFontBold, marginBottom:20 }}>
+                mantissa
+            </Text>
             <TextInput style={loginStyles.input}
                 placeholder="username"
                 onChangeText={onUsernameChange}
@@ -67,15 +121,29 @@ function Login(): React.JSX.Element {
                 onChangeText={onConfirmPasswordChange}
                 secureTextEntry={true}
             />
+            <Text style={{ fontFamily:defaultFontItalic, color:colorScheme.error, marginTop: 20 }}>
+                {status}
+            </Text>
             <View style={{
                 width: 0.7 * screenSize.width,
                 display: 'flex',
                 alignItems: 'center',
                 flexDirection: 'column',
 
-                marginTop:50,
+                marginTop:35,
             }}>
-                <Pressable style={loginStyles.button} onPress={() => { console.log(`login by ${username} with ${password}`); }}>
+                <Pressable style={loginStyles.button} onPress={() => {
+                    console.log(`login by ${username} with ${password}`);
+                    if (state == 'signup') {
+                        let result = validatePassword();
+                        if (!result.state) {
+                            onStatusChange(result.message);
+                            return;
+                        }
+                    }
+
+                    attemptLogin(username, password);
+                }}>
                     <Text style={{ color:colorScheme.primary, fontSize: fontSize.medium, fontFamily:defaultFont }}>
                         {
                             state == 'login' ? 'log in' : 'sign up'

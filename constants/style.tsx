@@ -10,6 +10,7 @@ export const fontSize = {
 
 export const defaultFont = 'SplineSansMono-Light';
 export const defaultFontItalic = 'SplineSansMono-LightItalic';
+export const defaultFontBold = 'SplineSansMono-SemiBold';
 
 export const styleSheet = StyleSheet.create({
     input: {
@@ -90,6 +91,7 @@ export const colorScheme = {
     tertiary: '#942dd4', // text
     primary: '#fff',
     link: '#7dcfff', // hyperlink
+    error: '#ff0000',
     border: '#222936'
 
     // background: '#000',
