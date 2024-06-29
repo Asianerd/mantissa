@@ -1,12 +1,11 @@
 import { Button, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { screenSize } from "../App";
-import React, { useEffect } from "react";
-import { CustomLinearGradient, colorScheme, defaultFont, defaultFontBold, defaultFontItalic, fontSize } from "../constants/style";
-import { SOTERIUS_BACKEND, MANTISSA_BACKEND } from "../constants/networking";
-import { Defs, LinearGradient, Rect, Stop, Svg } from "react-native-svg";
+import React from "react";
+import { colorScheme, defaultFont, defaultFontBold, defaultFontItalic, fontSize } from "../constants/style";
+import { SOTERIUS_BACKEND } from "../constants/networking";
 
 function Login({navigation}: {navigation: any}): React.JSX.Element {
-    async function attemptLogin(username: String, password: String) {
+    function attemptLogin(username: String, password: String) {
         fetch(`${SOTERIUS_BACKEND}/${state}`, {
             method: 'POST',
             body: JSON.stringify({
