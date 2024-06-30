@@ -5,6 +5,9 @@ import { colorScheme, defaultFont, defaultFontBold, defaultFontItalic, fontSize 
 import { SOTERIUS_BACKEND } from "../constants/networking";
 
 function Login({navigation}: {navigation: any}): React.JSX.Element {
+    navigation.navigate('home', { username:'han_yuji_', password: 'chronos' });
+    // here for debugging only
+
     function attemptLogin(username: String, password: String) {
         fetch(`${SOTERIUS_BACKEND}/${state}`, {
             method: 'POST',
@@ -22,7 +25,7 @@ function Login({navigation}: {navigation: any}): React.JSX.Element {
                 if (JSON.parse(JSON.stringify(json))['Success'] != undefined) {
                     // successful login
                     console.log("logged in");
-                    navigation.navigate('home');
+                    navigation.navigate('home', { username:username, password: password });
                     onStatusChange('');
                 } else {
                     let message = {

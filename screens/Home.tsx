@@ -1,21 +1,31 @@
-import { Button, Image, ScrollView, Text, View } from "react-native";
-import { fontSize } from "../constants/style";
+import { Button, Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { colorScheme, defaultFont, fontSize } from "../constants/style";
+import { screenSize } from "../App";
+import Navbar from "../components/Navbar";
 
-function Home({navigation}: {navigation: any}) {
-    return <ScrollView contentInsetAdjustmentBehavior='automatic' style={{
-        backgroundColor: 'black',
-        minHeight: '100%',
-        padding: 20,
-        paddingTop: 20,
+function Home({navigation, route}: {navigation: any, route: any}) {
+    const username = route.params.username;
+    const password = route.params.password;
+
+    return <View style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%'
+    }}>
+        <ScrollView contentInsetAdjustmentBehavior='automatic' style={{
+            backgroundColor: colorScheme.background,
+            flex: 1,
+            padding: 20,
+            paddingTop: 20,
         }}>
-            <View style={{
+            {/* <View style={{
                 display: 'flex',
                 justifyContent: 'flex-start',
                 alignItems: 'center',
                 flexDirection: 'row',
             }}>
                 <Image source={require('../assets/profile.png')} style={{
-                    width: fontSize.medium,
+                    width: fontSize.large,
                     aspectRatio: 1,
 
                     objectFit: 'contain',
@@ -23,17 +33,19 @@ function Home({navigation}: {navigation: any}) {
                 }}/>
                 <Text style={{
                     fontSize: fontSize.small,
+                    fontFamily: defaultFont,
                     color: 'white',
                     flex:1
                 }}>
-                    this is home huh
+                    {username}
                 </Text>
+            </View> */}
+            <View>
+
             </View>
-            <Button title="to login" onPress={() => {
-                console.log("to login");
-                navigation.navigate('login');
-            }}/>
-    </ScrollView>
+        </ScrollView>
+        <Navbar menu="home"/>
+    </View>
 }
 
 export default Home;
