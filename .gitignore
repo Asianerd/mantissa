@@ -1,2 +1,6 @@
 backend/target/
 .DS_Store
+
+node_modules/
+build/
+android/.gradle/
