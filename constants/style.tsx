@@ -5,7 +5,8 @@ export const fontSize = {
     tiny: 13,
     small: 20,
     medium: 22,
-    large: 30
+    large: 27,
+    larger: 30
 }
 
 export const defaultFont = 'SplineSansMono-Light';

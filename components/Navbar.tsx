@@ -1,19 +1,27 @@
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { colorScheme } from "../constants/style";
+import React from "react";
 
 const navbarStyles = StyleSheet.create({
     icon: {
-        width:27,
+        width:22,
         aspectRatio:1,
         objectFit: 'contain'
     }
 })
 
-function Navbar({menu}: {menu: String}) {
-    function NavbarButton(name: String, iconName: String, active: boolean) {
+const iconPaths: { [key: string]: any } = {
+    'home': require('../assets/home.png'),
+    'search': require('../assets/search.png'),
+    'wallet': require('../assets/finance.png'),
+    'profile': require('../assets/profile.png')
+}
+
+function Navbar({menu}: {menu: string}) {
+    function NavbarButton({name}: { name: string }) {
         return (
             <Pressable style={navbarStyles.icon} onPress={() => { console.log(`${name} tab`); }}>
-                <Image source={require(`../assets/${iconName}.png`)} style={{ height:'100%', width:'100%', opacity:active ? 1.0 : 0.5 }}/>
+                <Image source={iconPaths[name]} style={{ height:'100%', width:'100%', opacity:(menu == name) ? 1.0 : 0.5 }}/>
             </Pressable>
         );
     }
@@ -28,15 +36,10 @@ function Navbar({menu}: {menu: String}) {
             alignItems:'center',
             flexDirection:'row'
         }}>
-            <Pressable style={navbarStyles.icon} onPress={() => { console.log("search tab"); }}>
-                <Image source={require('../assets/search.png')} style={{ height:'100%', width:'100%', opacity:0.5 }}/>
-            </Pressable>
-            <Pressable style={navbarStyles.icon} onPress={() => { console.log("wallet tab"); }}>
-                <Image source={require('../assets/finance.png')} style={{ height:'100%', width:'100%', opacity:0.5 }}/>
-            </Pressable>
-            <Pressable style={navbarStyles.icon} onPress={() => { console.log("profile tab"); }}>
-                <Image source={require('../assets/profile.png')} style={{ height:'100%', width:'100%', opacity:0.5 }}/>
-            </Pressable>
+            <NavbarButton name='home' />
+            <NavbarButton name='search' />
+            <NavbarButton name='wallet' />
+            <NavbarButton name='profile' />
         </View>
     );
 }
