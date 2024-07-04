@@ -1,5 +1,6 @@
-use rand::prelude::*;
 use std::time::{SystemTime, UNIX_EPOCH};
+
+use rand::prelude::*;
 
 const ADJECTIVES: &str = "abandoned
 able
@@ -8133,6 +8134,13 @@ zucchini";
 
 // ad + noun
 
+pub fn get_time() -> u128 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .expect("time went backwards (???)")
+        .as_secs() as u128
+}
+
 pub fn generate_name(rng: &mut ThreadRng) -> String {
     format!(
         "{}{}",
@@ -8145,7 +8153,41 @@ pub fn generate_name(rng: &mut ThreadRng) -> String {
     )
 }
 
-
-pub fn get_time() -> u64 {
-    SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_secs()
+pub fn parse_response_to_string(data: Result<String, String>) -> String {
+    match data {
+        Ok(d) => format!(r#"{{"type":"success","data":{d}}}"#),
+        Err(e) => format!(r#"{{"type":"fail","error":{e}}}"#)
+    }
 }
+
+pub fn parse_response<T: serde::Serialize>(data: Result<T, T>) -> String {
+    match data {
+        Ok(d) => format!(r#"{{"type":"success","data":"{}"}}"#, urlencoding::encode(serde_json::to_string(&d).unwrap().as_str()).to_string()),
+        Err(e) => format!(r#"{{"type":"fail","error":"{}"}}"#, urlencoding::encode(serde_json::to_string(&e).unwrap().as_str()).to_string())
+    }
+}
+
+pub fn mean(data: &[f64]) -> Option<f64> {
+    let sum = data.iter().sum::<f64>();
+    let count = data.len();
+
+    match count {
+        positive if positive > 0 => Some(sum / count as f64),
+        _ => None,
+    }
+}
+
+pub fn std_deviation(data: &[f64]) -> Option<f64> {
+    match (mean(data), data.len()) {
+        (Some(data_mean), count) if count > 0 => {
+            let variance = data.iter().map(|value| {
+                let diff = data_mean - (*value as f64);
+                diff * diff
+            }).sum::<f64>() / count as f64;
+
+            Some(variance.sqrt())
+        },
+        _ => None
+    }
+}
+
