@@ -6,7 +6,7 @@ use crate::user::User;
 pub struct Inventory {
     // misleading name, actually refers to a singular item in the inventory
     pub id: i64,
-    pub volume: i64,
+    pub volume: f64,
     pub user_id: i64,
     pub stock_id: i64
 }

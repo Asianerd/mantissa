@@ -5,7 +5,7 @@ use rand::prelude::*;
 use rocket::State;
 use sqlx::{prelude::FromRow, Pool, Sqlite};
 
-use crate::{inventory::Inventory, listing, login_info::{LoginInformation, LoginResult}, utils};
+use crate::{inventory::Inventory, listing::{self, Listing}, login_info::{LoginInformation, LoginResult}, utils};
 
 #[derive(FromRow, Clone, Debug)]
 pub struct User {
@@ -30,24 +30,44 @@ impl User {
         let mut rng = rand::thread_rng();
 
         for user in sqlx::query_as::<_, User>("select * from user where bot;").fetch_all(db).await.unwrap() {
-            let inventory = Inventory::fetch_inventory(&user, db).await;
-            for item in inventory {
+            for iteration in 0..5 {
                 if rng.gen_bool(0.8) {
                     // pass
                     continue;
                 }
 
-                if rng.gen_bool(0.7) {
-                    // target existing listing
-                    let available_listings = listing::Listing::find_listings(item.stock_id, db)
-                        .await
-                        .iter()
-                        .filter(|x| x.status() == listing::Status::Pending)
-                        .collect::<Vec<&listing::Listing>>();
+                if rng.gen_bool(0.5) {
+                    // sell
+                    let inventory = Inventory::fetch_inventory(&user, db).await;
+                    let item = inventory[rng.gen_range(0..inventory.len())].clone();
 
-                    
+                    if rng.gen_bool(0.7) {
+                        // target existing listing
+                        let available_listings = listing::Listing::find_listings(item.stock_id, db)
+                            .await
+                            .iter()
+                            .filter(|x| x.status() == listing::Status::Pending)
+                            .map(|x| x.clone())
+                            .collect::<Vec<listing::Listing>>();
+                        
+                        if available_listings.is_empty() {
+                            continue;
+                        }
+
+                        let available_listings = available_listings
+                            .iter()
+                            .filter(|x| x.volume <= item.volume)
+                            .map(|x| x.clone())
+                            .collect::<Vec<Listing>>();
+
+                        let targeted_listing = available_listings[rng.gen_range(0..available_listings.len())].clone();;
+
+                        Listing::create_listing(db, targeted_listing.value, targeted_listing.volume, listing::ListingType::Sell, user.id, targeted_listing.stock_id).await;
+                    } else {
+                        // make new listing
+                    }
                 } else {
-                    // make new listing
+                    // buy
                 }
             }
         }
