@@ -5,12 +5,14 @@ use rand::prelude::*;
 use rocket::State;
 use sqlx::{prelude::FromRow, Pool, Sqlite};
 
-use crate::{inventory::Inventory, listing::{self, Listing}, login_info::{LoginInformation, LoginResult}, utils};
+use crate::{inventory::Inventory, listing::{self, Listing}, login_info::{LoginInformation, LoginResult}, stock, utils};
 
 #[derive(FromRow, Clone, Debug)]
 pub struct User {
     pub id: i64,
     pub username: String,
+    pub balance: f64,
+    pub aurum_id: i64,
     pub bot: bool
 }
 impl User {
@@ -27,26 +29,34 @@ impl User {
         // simulate create listings,
         // resolve all listings
 
-        let mut rng = rand::thread_rng();
-
         for user in sqlx::query_as::<_, User>("select * from user where bot;").fetch_all(db).await.unwrap() {
-            for iteration in 0..5 {
-                if rng.gen_bool(0.8) {
+            for _ in 0..5 {
+                if utils::async_rng_bool(0.8) {
                     // pass
                     continue;
                 }
 
-                if rng.gen_bool(0.5) {
+                if utils::async_rng_bool(0.5) {
                     // sell
                     let inventory = Inventory::fetch_inventory(&user, db).await;
-                    let item = inventory[rng.gen_range(0..inventory.len())].clone();
+                    if inventory.is_empty() {
+                        continue;
+                    }
 
-                    if rng.gen_bool(0.7) {
+                    let item = utils::async_rng_item(&inventory).clone();
+                    if item.volume <= 0f64 {
+                        continue;
+                    }
+
+                    if utils::async_rng_bool(0.7) {
                         // target existing listing
                         let available_listings = listing::Listing::find_listings(item.stock_id, db)
                             .await
                             .iter()
-                            .filter(|x| x.status() == listing::Status::Pending)
+                            .filter(|x|
+                                x.status() == listing::Status::Pending &&
+                                x.listing_type() == listing::ListingType::Buy
+                            )
                             .map(|x| x.clone())
                             .collect::<Vec<listing::Listing>>();
                         
@@ -60,11 +70,54 @@ impl User {
                             .map(|x| x.clone())
                             .collect::<Vec<Listing>>();
 
-                        let targeted_listing = available_listings[rng.gen_range(0..available_listings.len())].clone();;
+                        let targeted_listing = utils::async_rng_item(&available_listings).clone();
 
                         Listing::create_listing(db, targeted_listing.value, targeted_listing.volume, listing::ListingType::Sell, user.id, targeted_listing.stock_id).await;
                     } else {
                         // make new listing
+                        let mut available_listings = listing::Listing::find_listings(item.stock_id, db)
+                            .await
+                            .iter()
+                            .filter(|x|
+                                x.status() == listing::Status::Pending &&
+                                x.listing_type() == listing::ListingType::Sell
+                            )
+                            .map(|x| x.clone())
+                            .collect::<Vec<listing::Listing>>();
+                        available_listings.sort_by_key(|x| x.start_time);
+                        
+                        let median = utils::median(available_listings
+                            .iter()
+                            .rev()
+                            .take(10)
+                            .map(|x| x.value)
+                            .collect::<Vec<f64>>()
+                        );
+
+                        if median.is_none() {
+                            // no listings are available, create a new one at custom price
+                            // TODO: base this custom price on previous price history
+                            Listing::create_listing(
+                                db,
+                                utils::round(utils::async_rng_range(1f64, 1000f64), 2),
+                                utils::round((utils::async_rng_range_int(800, 1_000) as f64 / 1_000.0) * item.volume, 2),
+                                listing::ListingType::Sell,
+                                user.id,
+                                item.stock_id
+                            ).await;
+                            continue;
+                        }
+                        let median = median.unwrap();
+                        let std_dev = stock::Stock::get_stock(db, item.stock_id).await.unwrap().std_dev;
+
+                        Listing::create_listing(
+                            db,
+                            utils::round(median + (utils::async_rng_range(0.995, 1.005) * std_dev), 2),
+                            utils::round((utils::async_rng_range_int(100, 1_000) as f64 / 1_000.0) * item.volume, 2),
+                            listing::ListingType::Sell,
+                            user.id,
+                            item.stock_id
+                        ).await;
                     }
                 } else {
                     // buy
@@ -74,6 +127,8 @@ impl User {
     }
 }
 
+
+
 #[post("/", data="<login>")]
 pub async fn test(db: &State<Pool<Sqlite>>, login: LoginInformation) -> String {
     match login.login(db.inner()).await {
@@ -82,4 +137,10 @@ pub async fn test(db: &State<Pool<Sqlite>>, login: LoginInformation) -> String {
         },
         _ => utils::parse_response(Err("huh"))
     }
+}
+
+#[get("/")]
+pub async fn sim(db: &State<Pool<Sqlite>>) -> String {
+    User::simulate(db.inner()).await;
+    "huh".to_string()
 }

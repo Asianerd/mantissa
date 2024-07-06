@@ -1,6 +1,7 @@
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use rand::prelude::*;
+use sqlx::prelude::FromRow;
 
 const ADJECTIVES: &str = "abandoned
 able
@@ -8167,6 +8168,29 @@ pub fn parse_response<T: serde::Serialize>(data: Result<T, T>) -> String {
     }
 }
 
+pub fn median(data: Vec<f64>) -> Option<f64> {
+    // let data = data.sort();
+    let mut data = data.clone();
+    data.sort_by(|a, b| a.partial_cmp(b).unwrap());
+    let len = data.len();
+    let half_len = (len as f64 / 2.0).floor() as usize;
+
+    if len == 0 {
+        return None;
+    }
+
+    if (len % 2) == 0 {
+        // even
+        Some(
+            (data[half_len - 1] + data[half_len]) / 2.0
+        )
+    } else {
+        Some(
+            data[half_len]
+        )
+    }
+}
+
 pub fn mean(data: &[f64]) -> Option<f64> {
     let sum = data.iter().sum::<f64>();
     let count = data.len();
@@ -8191,3 +8215,64 @@ pub fn std_deviation(data: &[f64]) -> Option<f64> {
     }
 }
 
+pub fn async_rng_range(start: f64, end: f64) -> f64 {
+    start + (rand::random::<f64>() * (end - start))
+}
+
+pub fn async_rng_range_int(start: i32, end: i32) -> i32 {
+    // start + (rand::random::<f64>() * (end - start))
+    start + async_rng_int(end - start)
+}
+
+pub fn async_rng_bool(i: f64) -> bool {
+    rand::random::<f64>() > i
+}
+
+pub fn async_rng_float(end: impl Into<f64>) -> f64 {
+    rand::random::<f64>() * end.into()
+}
+
+pub fn async_rng_int(end: impl Into<i32>) -> i32 {
+    (rand::random::<f64>() * (end.into() + 1) as f64) as i32
+}
+
+pub fn async_rng_int_large(end: impl Into<i64>) -> i64 {
+    (rand::random::<f64>() * (end.into() + 1) as f64) as i64
+}
+
+pub fn async_rng_index<T>(inv: &Vec<T>) -> usize {
+    async_rng_int(inv.len() as i32 - 1) as usize
+}
+
+pub fn async_rng_item<T>(inv: &Vec<T>) -> &T {
+    &inv[async_rng_index(inv)]
+}
+
+pub fn round(x: f64, d: u32) -> f64 {
+    let t = 10i32.pow(d) as f64;
+    let y = (x * t).round() / t;
+
+    y
+}
+
+pub fn slightly_round_floats(i: f64, custom_wiggle_room: Option<f64>) -> f64 {
+    // 0.10000001 -> 0.1
+    let i = i * 100.0;
+    let w = custom_wiggle_room.unwrap_or(0.05);
+    if (i + w) >= i.ceil() {
+        return i.ceil() / 100.0;
+    }
+    if (i - w) <= i.floor() {
+        return i.floor() / 100.0;
+    }
+    i / 100.0
+}
+
+
+#[derive(FromRow, Debug)]
+pub struct Value(pub f64);
+// f64 doesnt implement FromRow for some reason???
+
+#[derive(FromRow, Debug)]
+pub struct ValueInt(pub i64);
+// cant believe i have to do this

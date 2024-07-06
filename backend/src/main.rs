@@ -22,4 +22,8 @@ async fn rocket() -> _ {
         .attach(cors::CORS)
         .mount("/debug", routes![database::debug_users])
         .mount("/test", routes![user::test])
+        .mount("/sim_test", routes![user::sim])
+
+
+        .mount("/shares/fetch_highest", routes![stock::fetch_highest_valued])
 }
