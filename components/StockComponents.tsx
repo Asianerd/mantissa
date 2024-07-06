@@ -8,12 +8,14 @@ const widgetStyles = {
 }
 
 export class StockData {
+    stockID: number;
     name: string;
     code: string;
     lastBuy: number;
     growthAmount: number;
 
-    constructor(name: string, code: string, lastBuy: number, growthAmount: number) {
+    constructor(stockID: number, name: string, code: string, lastBuy: number, growthAmount: number) {
+        this.stockID = stockID;
         this.name = name;
         this.code = code;
         this.lastBuy = lastBuy;
@@ -21,7 +23,7 @@ export class StockData {
     }
 }
 
-function StockWidget({stockData, style}: {stockData: StockData, style?: any}) {
+function StockWidget({navigation, stockData, style}: {navigation: any, stockData: StockData, style?: any}) {
     const growthType = stockData.growthAmount > 0 ? 'profit' : stockData.growthAmount < 0 ? 'loss' : 'neutral';
 
     return (
@@ -30,7 +32,11 @@ function StockWidget({stockData, style}: {stockData: StockData, style?: any}) {
             justifyContent:'flex-end',
             padding:10,
             paddingHorizontal:15
-        }, widgetStyles, style]}>
+        }, widgetStyles, style]}
+        onPress={() => {
+            navigation.navigate('inspect', { stockID: stockData.stockID })
+        }}
+        >
             <View style={{
                 display:'flex',
                 justifyContent:'space-between',
@@ -82,7 +88,7 @@ function StockWidget({stockData, style}: {stockData: StockData, style?: any}) {
                                             <Image source={require('../assets/loss.png')} style={{
                                                 height:15,
                                                 aspectRatio:1
-                                            }}/>
+                                            }}/> 
                                         )
                                     }
                                 </>

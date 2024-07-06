@@ -20,7 +20,7 @@ function Home({navigation, route}: {navigation: any, route: any}) {
         );
     }
 
-    const stockData = new StockData('netflix.com', 'NFLX', 647.15, 0.2);
+    const stockData = new StockData(281474976710656, 'netflix.com', 'NFLX', 647.15, 0.2);
 
     return <View style={{
         display: 'flex',
@@ -63,12 +63,12 @@ function Home({navigation, route}: {navigation: any, route: any}) {
             }}>
                 <HyperlinkHeader />
                 <ScrollView horizontal={true}>
-                    <StockWidget stockData={stockData} />
-                    <StockWidget stockData={stockData} style={{ marginLeft:20 }} />
-                    <StockWidget stockData={stockData} style={{ marginLeft:20 }} />
-                    <StockWidget stockData={stockData} style={{ marginLeft:20 }} />
-                    <StockWidget stockData={stockData} style={{ marginLeft:20 }} />
-                    <StockWidget stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
                     <HyperlinkWidget func={() => { console.log("pressed"); }} style={{ marginLeft:20 }}/>
                 </ScrollView>
             </View>

@@ -15,6 +15,7 @@ import {
 
 import Login from './screens/Login';
 import Home from './screens/Home';
+import Inspect from './screens/Inspect';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,7 @@ function App(): React.JSX.Element {
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="login" component={Login} />
                 <Stack.Screen name="home" component={Home} />
+                <Stack.Screen name="inspect" component={Inspect} />
             </Stack.Navigator>
         </NavigationContainer>
     );
