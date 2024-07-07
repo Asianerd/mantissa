@@ -8135,11 +8135,11 @@ zucchini";
 
 // ad + noun
 
-pub fn get_time() -> u128 {
+pub fn get_time() -> i64 {
     SystemTime::now()
         .duration_since(UNIX_EPOCH)
         .expect("time went backwards (???)")
-        .as_secs() as u128
+        .as_secs() as i64
 }
 
 pub fn generate_name(rng: &mut ThreadRng) -> String {
@@ -8168,6 +8168,7 @@ pub fn parse_response<T: serde::Serialize>(data: Result<T, T>) -> String {
     }
 }
 
+// #region data
 pub fn median(data: Vec<f64>) -> Option<f64> {
     // let data = data.sort();
     let mut data = data.clone();
@@ -8215,6 +8216,26 @@ pub fn std_deviation(data: &[f64]) -> Option<f64> {
     }
 }
 
+pub fn round(x: f64, d: u32) -> f64 {
+    let t = 10i32.pow(d) as f64;
+    (x * t).round() / t
+}
+
+pub fn slightly_round_floats(i: f64, custom_wiggle_room: Option<f64>) -> f64 {
+    // 0.10000001 -> 0.1
+    let i = i * 100.0;
+    let w = custom_wiggle_room.unwrap_or(0.05);
+    if (i + w) >= i.ceil() {
+        return i.ceil() / 100.0;
+    }
+    if (i - w) <= i.floor() {
+        return i.floor() / 100.0;
+    }
+    i / 100.0
+}
+// #endregion
+
+// #region rng
 pub fn async_rng_range(start: f64, end: f64) -> f64 {
     start + (rand::random::<f64>() * (end - start))
 }
@@ -8247,27 +8268,13 @@ pub fn async_rng_index<T>(inv: &Vec<T>) -> usize {
 pub fn async_rng_item<T>(inv: &Vec<T>) -> &T {
     &inv[async_rng_index(inv)]
 }
+// #endregion
 
-pub fn round(x: f64, d: u32) -> f64 {
-    let t = 10i32.pow(d) as f64;
-    let y = (x * t).round() / t;
-
-    y
+// #region datetime
+pub fn epoch_to_date(t: i64) -> i64 {
+    t / 86000
 }
-
-pub fn slightly_round_floats(i: f64, custom_wiggle_room: Option<f64>) -> f64 {
-    // 0.10000001 -> 0.1
-    let i = i * 100.0;
-    let w = custom_wiggle_room.unwrap_or(0.05);
-    if (i + w) >= i.ceil() {
-        return i.ceil() / 100.0;
-    }
-    if (i - w) <= i.floor() {
-        return i.floor() / 100.0;
-    }
-    i / 100.0
-}
-
+// #endregion
 
 #[derive(FromRow, Debug)]
 pub struct Value(pub f64);

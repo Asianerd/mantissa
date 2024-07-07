@@ -1,5 +1,6 @@
 use std::str::FromStr;
 
+use rocket::State;
 use serde::{Deserialize, Serialize};
 use sqlx::{prelude::FromRow, Pool, Sqlite};
 use strum_macros::{Display, EnumString, IntoStaticStr};
@@ -37,12 +38,20 @@ impl Listing {
             .unwrap()
     }
 
-    pub async fn standard_deviation(stock_id: i64, db: &Pool<Sqlite>) -> (Option<f64>, Option<f64>) { // (buy price, sell price)
-        let listings = Listing::find_listings(stock_id, db).await;
-        (
-            utils::std_deviation(&listings.iter().filter(|x| x.listing_type() == ListingType::Buy).map(|x| x.value).collect::<Vec<f64>>()),
-            utils::std_deviation(&listings.iter().filter(|x| x.listing_type() == ListingType::Sell).map(|x| x.value).collect::<Vec<f64>>())
-        )
+    pub async fn find_user_listings(user_id: i64, db: &Pool<Sqlite>) -> Vec<Listing> {
+        sqlx::query_as("select * from listing where user_id = $1")
+            .bind(user_id)
+            .fetch_all(db)
+            .await
+            .unwrap()
+    }
+
+    pub async fn standard_deviation(stock_id: i64, db: &Pool<Sqlite>) -> Option<f64> {
+        utils::std_deviation(&Listing::find_listings(stock_id, db).await.iter().map(|x| x.value).collect::<Vec<f64>>())
+        // (
+        //     utils::std_deviation(&listings.iter().filter(|x| x.listing_type() == ListingType::Buy).map(|x| x.value).collect::<Vec<f64>>()),
+        //     utils::std_deviation(&listings.iter().filter(|x| x.listing_type() == ListingType::Sell).map(|x| x.value).collect::<Vec<f64>>())
+        // )
     }
 
     pub async fn generate_listing_id(db: &Pool<Sqlite>) -> i64 {
@@ -93,7 +102,7 @@ impl Listing {
                 .await.unwrap();
         }
         // add listing
-        sqlx::query("insert into listing values ($1, $2, $3, $4, $5, $6, $7, $8, $9);").bind(Listing::generate_listing_id(db).await).bind(value).bind(volume).bind(utils::get_time() as i64).bind(0).bind(format!("{}", Status::Pending)).bind(format!("{}", listing_type)).bind(user_id).bind(stock_id)
+        sqlx::query("insert into listing values ($1, $2, $3, $4, $5, $6, $7, $8, $9);").bind(Listing::generate_listing_id(db).await).bind(value).bind(volume).bind(utils::get_time()).bind(0).bind(format!("{}", Status::Pending)).bind(format!("{}", listing_type)).bind(user_id).bind(stock_id)
             .execute(db)
             .await.unwrap();
         ListingError::Success
@@ -119,4 +128,14 @@ pub enum ListingError {
     NoVolume, // when volume is 0.0
 
     NotEnoughOwned
+}
+
+#[get("/<stock_id>")]
+pub async fn fetch_by_id(db: &State<Pool<Sqlite>>, stock_id: i64) -> String {
+    utils::parse_response(Ok(Listing::find_listings(stock_id, db).await))
+}
+
+#[get("/<user_id>")]
+pub async fn fetch_by_user(db: &State<Pool<Sqlite>>, user_id: i64) -> String {
+    utils::parse_response(Ok(Listing::find_user_listings(user_id, db).await))
 }

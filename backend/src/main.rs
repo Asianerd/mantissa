@@ -25,5 +25,10 @@ async fn rocket() -> _ {
         .mount("/sim_test", routes![user::sim])
 
 
-        .mount("/shares/fetch_highest", routes![stock::fetch_highest_valued])
+        .mount("/shares/highest", routes![stock::fetch_highest_valued])
+        .mount("/shares/pricing", routes![stock::pricing_history])
+        .mount("/shares/svg", routes![stock::generate_svg])
+
+        .mount("/listing/by_id", routes![listing::fetch_by_id])
+        .mount("/listing/by_user", routes![listing::fetch_by_user])
 }
