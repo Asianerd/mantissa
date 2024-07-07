@@ -1,5 +1,6 @@
 import { Image, Pressable, Text, View } from "react-native";
 import { colorScheme, defaultFont, defaultFontBold, defaultFontItalic, fontSize } from "../constants/style";
+import { Circle, Polyline, Svg } from "react-native-svg";
 
 const widgetStyles = {
     height: 160,
@@ -30,19 +31,27 @@ function StockWidget({navigation, stockData, style}: {navigation: any, stockData
         <Pressable style={[{
             backgroundColor:colorScheme.secondary,
             justifyContent:'flex-end',
-            padding:10,
-            paddingHorizontal:15
+            overflow: 'hidden'
         }, widgetStyles, style]}
         onPress={() => {
             navigation.navigate('inspect', { stockID: stockData.stockID })
         }}
         >
+            <Svg style={{
+                // backgroundColor:'red'
+            }}>
+                {/* <Circle cx="10" cy="10" r="45" fill="green" /> */}
+                <Polyline points="0,150 30,50 60,100 60,100 90,110 120,90 150,100 180,123 210,53 240,100" fill="none" stroke="green" strokeWidth="1.5"/>
+            </Svg>
             <View style={{
+                position:'absolute',
                 display:'flex',
                 justifyContent:'space-between',
                 alignItems:'center',
                 flexDirection:'row',
-                width:'100%'
+                width:'100%',
+                padding:10,
+                paddingHorizontal:15
             }}>
                 <View style={{
                     display:'flex',

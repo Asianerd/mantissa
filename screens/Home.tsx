@@ -8,13 +8,14 @@ function Home({navigation, route}: {navigation: any, route: any}) {
     const username = route.params.username;
     const password = route.params.password;
 
-    function HyperlinkHeader() {
+    function HyperlinkHeader({header}: {header: any}) {
         return (
             <View style={{
+                marginTop: 10,
                 marginBottom: 10
             }}>
                 <Text style={{ fontFamily: defaultFontItalic, fontSize:fontSize.tiny * 1.3 }}>
-                    fastest growing shares →
+                    {header}
                 </Text>
             </View>
         );
@@ -61,7 +62,27 @@ function Home({navigation, route}: {navigation: any, route: any}) {
             <View style={{
                 marginTop: 20
             }}>
-                <HyperlinkHeader />
+                <HyperlinkHeader header={"fastest growing shares →"} />
+                <ScrollView horizontal={true}>
+                    <StockWidget navigation={navigation} stockData={stockData} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <HyperlinkWidget func={() => { console.log("pressed"); }} style={{ marginLeft:20 }}/>
+                </ScrollView>
+                <HyperlinkHeader header={"highest value shares →"} />
+                <ScrollView horizontal={true}>
+                    <StockWidget navigation={navigation} stockData={stockData} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
+                    <HyperlinkWidget func={() => { console.log("pressed"); }} style={{ marginLeft:20 }}/>
+                </ScrollView>
+                <HyperlinkHeader header={"high potential shares →"} />
                 <ScrollView horizontal={true}>
                     <StockWidget navigation={navigation} stockData={stockData} />
                     <StockWidget navigation={navigation} stockData={stockData} style={{ marginLeft:20 }} />
