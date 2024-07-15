@@ -12,18 +12,19 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-mantissa_frontend-mantissa_frontendTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-mantissa_frontend-mantissa_frontendTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		D5D1FA1B256347E8B89F4C36 /* SplineSansMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECC5C34CE2884D83AD7A039E /* SplineSansMono-Bold.ttf */; };
-		C4B24620B6D44D179A9316EB /* SplineSansMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C51E1B23946045A6B3EB0C33 /* SplineSansMono-BoldItalic.ttf */; };
 		4DEC62F6EFF5426DB5A3AE46 /* SplineSansMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964825EDABEB4044A598DC14 /* SplineSansMono-Italic.ttf */; };
-		E32D0927831046E0A671B4D3 /* SplineSansMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 774F39934821416BB8AF0CE3 /* SplineSansMono-Light.ttf */; };
+		64BE549714F4428284556B47 /* SplineSansMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB9AE2A055354AF69AB07387 /* SplineSansMono-Regular.ttf */; };
+		66C6F54D8DD146BF8ACB5EB4 /* SplineSansMono-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C5F7844AAA472D9B98A8A6 /* SplineSansMono-SemiBoldItalic.ttf */; };
+		7699B88040F8A987B510C191 /* libPods-mantissa_frontend-mantissa_frontendTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-mantissa_frontend-mantissa_frontendTests.a */; };
 		79CE572B242A412DA046CF0E /* SplineSansMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D14F7A8A40EC920BFB6E /* SplineSansMono-LightItalic.ttf */; };
 		811289509773457182365064 /* SplineSansMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7076BD39BAB4999AD8C116A /* SplineSansMono-Medium.ttf */; };
-		F1F39AA71697429A9B9994A2 /* SplineSansMono-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1876738004374E0D9C4CBAB1 /* SplineSansMono-MediumItalic.ttf */; };
-		64BE549714F4428284556B47 /* SplineSansMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB9AE2A055354AF69AB07387 /* SplineSansMono-Regular.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		831DF5A6FE0B4DE29E18FA75 /* SplineSansMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E15F13207F348D28BE8BEAC /* SplineSansMono-SemiBold.ttf */; };
-		66C6F54D8DD146BF8ACB5EB4 /* SplineSansMono-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C5F7844AAA472D9B98A8A6 /* SplineSansMono-SemiBoldItalic.ttf */; };
+		8EB72157EA5EDA2EBB0C6CBE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B9B95379A306446D88D781D5 /* PrivacyInfo.xcprivacy */; };
+		C4B24620B6D44D179A9316EB /* SplineSansMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C51E1B23946045A6B3EB0C33 /* SplineSansMono-BoldItalic.ttf */; };
+		D5D1FA1B256347E8B89F4C36 /* SplineSansMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECC5C34CE2884D83AD7A039E /* SplineSansMono-Bold.ttf */; };
+		E32D0927831046E0A671B4D3 /* SplineSansMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 774F39934821416BB8AF0CE3 /* SplineSansMono-Light.ttf */; };
+		F1F39AA71697429A9B9994A2 /* SplineSansMono-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1876738004374E0D9C4CBAB1 /* SplineSansMono-MediumItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,24 +48,25 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mantissa_frontend/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mantissa_frontend/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = mantissa_frontend/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1876738004374E0D9C4CBAB1 /* SplineSansMono-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-MediumItalic.ttf"; path = "../assets/fonts/SplineSansMono-MediumItalic.ttf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-mantissa_frontend-mantissa_frontendTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mantissa_frontend-mantissa_frontendTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-mantissa_frontend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mantissa_frontend.debug.xcconfig"; path = "Target Support Files/Pods-mantissa_frontend/Pods-mantissa_frontend.debug.xcconfig"; sourceTree = "<group>"; };
+		4E15F13207F348D28BE8BEAC /* SplineSansMono-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-SemiBold.ttf"; path = "../assets/fonts/SplineSansMono-SemiBold.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-mantissa_frontend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mantissa_frontend.release.xcconfig"; path = "Target Support Files/Pods-mantissa_frontend/Pods-mantissa_frontend.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-mantissa_frontend-mantissa_frontendTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mantissa_frontend-mantissa_frontendTests.debug.xcconfig"; path = "Target Support Files/Pods-mantissa_frontend-mantissa_frontendTests/Pods-mantissa_frontend-mantissa_frontendTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-mantissa_frontend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mantissa_frontend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B26D14F7A8A40EC920BFB6E /* SplineSansMono-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-LightItalic.ttf"; path = "../assets/fonts/SplineSansMono-LightItalic.ttf"; sourceTree = "<group>"; };
+		774F39934821416BB8AF0CE3 /* SplineSansMono-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-Light.ttf"; path = "../assets/fonts/SplineSansMono-Light.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mantissa_frontend/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-mantissa_frontend-mantissa_frontendTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mantissa_frontend-mantissa_frontendTests.release.xcconfig"; path = "Target Support Files/Pods-mantissa_frontend-mantissa_frontendTests/Pods-mantissa_frontend-mantissa_frontendTests.release.xcconfig"; sourceTree = "<group>"; };
+		964825EDABEB4044A598DC14 /* SplineSansMono-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-Italic.ttf"; path = "../assets/fonts/SplineSansMono-Italic.ttf"; sourceTree = "<group>"; };
+		AB9AE2A055354AF69AB07387 /* SplineSansMono-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-Regular.ttf"; path = "../assets/fonts/SplineSansMono-Regular.ttf"; sourceTree = "<group>"; };
+		B9B95379A306446D88D781D5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = mantissa_frontend/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C51E1B23946045A6B3EB0C33 /* SplineSansMono-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-BoldItalic.ttf"; path = "../assets/fonts/SplineSansMono-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C5C5F7844AAA472D9B98A8A6 /* SplineSansMono-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-SemiBoldItalic.ttf"; path = "../assets/fonts/SplineSansMono-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		ECC5C34CE2884D83AD7A039E /* SplineSansMono-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-Bold.ttf"; path = "../assets/fonts/SplineSansMono-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		ECC5C34CE2884D83AD7A039E /* SplineSansMono-Bold.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-Bold.ttf"; path = "../assets/fonts/SplineSansMono-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C51E1B23946045A6B3EB0C33 /* SplineSansMono-BoldItalic.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-BoldItalic.ttf"; path = "../assets/fonts/SplineSansMono-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		964825EDABEB4044A598DC14 /* SplineSansMono-Italic.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-Italic.ttf"; path = "../assets/fonts/SplineSansMono-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		774F39934821416BB8AF0CE3 /* SplineSansMono-Light.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-Light.ttf"; path = "../assets/fonts/SplineSansMono-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6B26D14F7A8A40EC920BFB6E /* SplineSansMono-LightItalic.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-LightItalic.ttf"; path = "../assets/fonts/SplineSansMono-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F7076BD39BAB4999AD8C116A /* SplineSansMono-Medium.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-Medium.ttf"; path = "../assets/fonts/SplineSansMono-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1876738004374E0D9C4CBAB1 /* SplineSansMono-MediumItalic.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-MediumItalic.ttf"; path = "../assets/fonts/SplineSansMono-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AB9AE2A055354AF69AB07387 /* SplineSansMono-Regular.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-Regular.ttf"; path = "../assets/fonts/SplineSansMono-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4E15F13207F348D28BE8BEAC /* SplineSansMono-SemiBold.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-SemiBold.ttf"; path = "../assets/fonts/SplineSansMono-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C5C5F7844AAA472D9B98A8A6 /* SplineSansMono-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "SplineSansMono-SemiBoldItalic.ttf"; path = "../assets/fonts/SplineSansMono-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F7076BD39BAB4999AD8C116A /* SplineSansMono-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SplineSansMono-Medium.ttf"; path = "../assets/fonts/SplineSansMono-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				B9B95379A306446D88D781D5 /* PrivacyInfo.xcprivacy */,
 			);
 			name = mantissa_frontend;
 			sourceTree = "<group>";
@@ -160,19 +163,8 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3B4392A12AC88292D35C810B /* Pods-mantissa_frontend.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-mantissa_frontend.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-mantissa_frontend-mantissa_frontendTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-mantissa_frontend-mantissa_frontendTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		9BCAF96941AC4B67BF51BA2D /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				ECC5C34CE2884D83AD7A039E /* SplineSansMono-Bold.ttf */,
 				C51E1B23946045A6B3EB0C33 /* SplineSansMono-BoldItalic.ttf */,
@@ -187,7 +179,17 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B4392A12AC88292D35C810B /* Pods-mantissa_frontend.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-mantissa_frontend.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-mantissa_frontend-mantissa_frontendTests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-mantissa_frontend-mantissa_frontendTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -294,6 +296,7 @@
 				64BE549714F4428284556B47 /* SplineSansMono-Regular.ttf in Resources */,
 				831DF5A6FE0B4DE29E18FA75 /* SplineSansMono-SemiBold.ttf in Resources */,
 				66C6F54D8DD146BF8ACB5EB4 /* SplineSansMono-SemiBoldItalic.ttf in Resources */,
+				8EB72157EA5EDA2EBB0C6CBE /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +520,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N6G8WXPPTU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mantissa_frontend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -544,6 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N6G8WXPPTU;
 				INFOPLIST_FILE = mantissa_frontend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -566,6 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -593,6 +599,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CXX = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
@@ -612,6 +619,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD = "";
+				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -631,7 +640,13 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -639,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -666,6 +682,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				CXX = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
@@ -678,6 +695,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD = "";
+				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -696,7 +715,13 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -5,7 +5,7 @@ import { colorScheme, defaultFont, defaultFontBold, defaultFontItalic, fontSize 
 import { SOTERIUS_BACKEND } from "../constants/networking";
 
 function Login({navigation}: {navigation: any}): React.JSX.Element {
-    navigation.navigate('home', { username:'han_yuji_', password: 'chronos' });
+    // navigation.navigate('home', { username:'han_yuji_', password: 'chronos' });
     // here for debugging only
 
     function attemptLogin(username: String, password: String) {
@@ -53,6 +53,8 @@ function Login({navigation}: {navigation: any}): React.JSX.Element {
 
             paddingTop:20,
             paddingBottom:5,
+
+            color: colorScheme.primary,
 
             fontSize: fontSize.small,
             fontFamily: defaultFont
@@ -108,10 +110,12 @@ function Login({navigation}: {navigation: any}): React.JSX.Element {
             <TextInput style={loginStyles.input}
                 placeholder="username"
                 onChangeText={onUsernameChange}
+                spellCheck={false}
             />
             <TextInput style={loginStyles.input}
                 placeholder="password"
                 onChangeText={onPasswordChange}
+                spellCheck={false}
                 secureTextEntry={true}
             />
             <TextInput style={[ loginStyles.input,
@@ -121,6 +125,7 @@ function Login({navigation}: {navigation: any}): React.JSX.Element {
                 ]}
                 placeholder="confirm password"
                 onChangeText={onConfirmPasswordChange}
+                spellCheck={false}
                 secureTextEntry={true}
             />
             <Text style={{ fontFamily:defaultFontItalic, color:colorScheme.error, marginTop: 20 }}>

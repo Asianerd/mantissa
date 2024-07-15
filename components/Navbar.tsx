@@ -29,7 +29,8 @@ function Navbar({menu}: {menu: string}) {
     return (
         <View style={{
             backgroundColor:colorScheme.secondary,
-            height: 50,
+            height: 70,
+            paddingBottom:15,
 
             display:'flex',
             justifyContent:'space-evenly',

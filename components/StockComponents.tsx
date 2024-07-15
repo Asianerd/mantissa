@@ -127,6 +127,7 @@ export function HyperlinkWidget({style, func}: { style?: any, func?: any }) {
             alignItems:'center',
         }, widgetStyles, style ]}>
             <Text style={{
+                color:colorScheme.primary,
                 fontFamily:defaultFontItalic
             }}>
                 see more

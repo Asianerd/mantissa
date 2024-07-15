@@ -14,7 +14,7 @@ function Home({navigation, route}: {navigation: any, route: any}) {
                 marginTop: 10,
                 marginBottom: 10
             }}>
-                <Text style={{ fontFamily: defaultFontItalic, fontSize:fontSize.tiny * 1.3 }}>
+                <Text style={{ color:colorScheme.primary, fontFamily: defaultFontItalic, fontSize:fontSize.tiny * 1.3 }}>
                     {header}
                 </Text>
             </View>
@@ -32,7 +32,7 @@ function Home({navigation, route}: {navigation: any, route: any}) {
             backgroundColor: colorScheme.background,
             flex: 1,
             padding: 20,
-            paddingTop: 20,
+            paddingTop: 10,
         }}>
             <Text style={{
                 fontFamily:defaultFont,
