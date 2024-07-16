@@ -5,7 +5,7 @@ import { colorScheme, defaultFont, defaultFontBold, defaultFontItalic, fontSize 
 import { SOTERIUS_BACKEND } from "../constants/networking";
 
 function Login({navigation}: {navigation: any}): React.JSX.Element {
-    // navigation.navigate('home', { username:'han_yuji_', password: 'chronos' });
+    navigation.navigate('home', { username:'han_yuji_', password: 'chronos' });
     // here for debugging only
 
     function attemptLogin(username: String, password: String) {

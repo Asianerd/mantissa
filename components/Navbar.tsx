@@ -4,9 +4,13 @@ import React from "react";
 
 const navbarStyles = StyleSheet.create({
     icon: {
-        width:22,
+        width:40,
         aspectRatio:1,
-        objectFit: 'contain'
+        objectFit: 'contain',
+        // backgroundColor:'red',
+        display:'flex',
+        justifyContent:'flex-end',
+        alignItems:'center'
     }
 })
 
@@ -21,7 +25,7 @@ function Navbar({menu}: {menu: string}) {
     function NavbarButton({name}: { name: string }) {
         return (
             <Pressable style={navbarStyles.icon} onPress={() => { console.log(`${name} tab`); }}>
-                <Image source={iconPaths[name]} style={{ height:'100%', width:'100%', opacity:(menu == name) ? 1.0 : 0.5 }}/>
+                <Image source={iconPaths[name]} style={{ height:'55%', width:'55%', opacity:(menu == name) ? 1.0 : 0.5 }}/>
             </Pressable>
         );
     }
@@ -29,12 +33,11 @@ function Navbar({menu}: {menu: string}) {
     return (
         <View style={{
             backgroundColor:colorScheme.secondary,
-            height: 70,
-            paddingBottom:15,
+            height: 40,
 
             display:'flex',
             justifyContent:'space-evenly',
-            alignItems:'center',
+            alignItems:'flex-end',
             flexDirection:'row'
         }}>
             <NavbarButton name='home' />

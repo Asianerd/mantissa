@@ -1,5 +1,7 @@
-import { ColorValue, StyleSheet, View } from "react-native"
+import { Fragment } from "react";
+import { ColorValue, SafeAreaView, StyleSheet, View } from "react-native"
 import { Defs, LinearGradient, Rect, Stop, Svg } from "react-native-svg";
+import Navbar from "../components/Navbar";
 
 export const fontSize = {
     tiny: 13,
@@ -35,6 +37,27 @@ export const CustomLinearGradient = ({children, style, from, to}: {children: any
         </View>
     );
 };
+
+export const DefaultContainer = ({children, menu}: {children?: any, menu: any}) => {
+    return (<Fragment>
+        <SafeAreaView style={{
+            flex:0,
+            backgroundColor:colorScheme.background
+        }}/>
+        <SafeAreaView style={{
+            flex:1,
+            backgroundColor:colorScheme.secondary
+        }}>
+            <View style={{
+                flex:1,
+                backgroundColor:colorScheme.background
+            }}>
+                {children}
+            </View>
+            <Navbar menu={menu} />
+        </SafeAreaView>
+    </Fragment>);
+}
 
 export const colorScheme = {
 

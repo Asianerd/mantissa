@@ -62,48 +62,7 @@ function StockWidget({navigation, stockData, style}: {navigation: any, stockData
                     <Text style={{ fontFamily:defaultFontBold, fontSize:fontSize.large, color:colorScheme.primary }}>
                         {stockData.code}
                     </Text>
-                    <View style={{
-                        display:'flex',
-                        flexDirection:'column',
-                        alignItems:'center',
-                        marginLeft: 10,
-                        // marginBottom: 5
-                    }}>
-                        {
-                            growthType == 'neutral' ? (
-                                <Image source={require('../assets/neutral.png')} style={{
-                                    height:15,
-                                    aspectRatio:1
-                                }}/>
-                            ) : (
-                                <>
-                                    {
-                                        growthType == 'loss' ? '' : (
-                                            <Image source={require('../assets/profit.png')} style={{
-                                                height:15,
-                                                aspectRatio:1
-                                            }}/>
-                                        )
-                                    }
-                                    <Text style={{
-                                        fontFamily:defaultFontBold,
-                                        fontSize:fontSize.tiny,
-                                        color: growthType == 'profit' ? '#0f0' : '#f00'
-                                    }}>
-                                        {stockData.growthAmount}
-                                    </Text>
-                                    {
-                                        growthType == 'profit' ? '' : (
-                                            <Image source={require('../assets/loss.png')} style={{
-                                                height:15,
-                                                aspectRatio:1
-                                            }}/> 
-                                        )
-                                    }
-                                </>
-                            )
-                        }
-                    </View>
+                    <PercentageGrowthIndicator growthAmount={stockData.growthAmount} />
                 </View>
                 <Text style={{
                     fontFamily:defaultFontBold,
@@ -115,6 +74,53 @@ function StockWidget({navigation, stockData, style}: {navigation: any, stockData
             </View>
         </Pressable>
     );
+}
+
+export function PercentageGrowthIndicator({growthAmount}: {growthAmount: any}) {
+    const growthType = growthAmount > 0 ? 'profit' : growthAmount < 0 ? 'loss' : 'neutral';
+
+    return (<View style={{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        marginLeft: 10,
+        // marginBottom: 5
+    }}>
+        {
+            growthType == 'neutral' ? (
+                <Image source={require('../assets/neutral.png')} style={{
+                    height:15,
+                    aspectRatio:1
+                }}/>
+            ) : (
+                <>
+                    {
+                        growthType == 'loss' ? '' : (
+                            <Image source={require('../assets/profit.png')} style={{
+                                height:15,
+                                aspectRatio:1
+                            }}/>
+                        )
+                    }
+                    <Text style={{
+                        fontFamily:defaultFontBold,
+                        fontSize:fontSize.tiny,
+                        color: growthType == 'profit' ? '#0f0' : '#f00'
+                    }}>
+                        {Math.abs(growthAmount)}
+                    </Text>
+                    {
+                        growthType == 'profit' ? '' : (
+                            <Image source={require('../assets/loss.png')} style={{
+                                height:15,
+                                aspectRatio:1
+                            }}/> 
+                        )
+                    }
+                </>
+            )
+        }
+    </View>);
 }
 
 export function HyperlinkWidget({style, func}: { style?: any, func?: any }) {
